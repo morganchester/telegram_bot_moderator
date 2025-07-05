@@ -1,0 +1,26 @@
+[Unit]
+Description=Telegram Bot Chat Deleter
+After=network.target
+Wants=network.target
+
+[Service]
+Type=simple
+User=root
+Group=root
+WorkingDirectory=/opt/scripts/telegramBotChatDeleter
+ExecStart=/opt/scripts/telegramBotChatDeleter/telegram-bot-chat-deleter
+Restart=always
+RestartSec=5
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=telegram-bot-chat-deleter
+
+# Security settings
+NoNewPrivileges=yes
+PrivateTmp=yes
+ProtectSystem=strict
+ProtectHome=yes
+ReadWritePaths=/opt/scripts/telegramBotChatDeleter
+
+[Install]
+WantedBy=multi-user.target
