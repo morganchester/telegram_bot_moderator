@@ -1,6 +1,6 @@
 # Telegram Chat Moderator Bot
 
-This is a simple Telegram bot written in Go that moderates messages in a specific topic thread of a group chat. It automatically deletes messages that **do not contain a photo or a video of at least 30 seconds**. It also **forwards notifications** to another chat when a user leaves the group.
+This is a simple Telegram bot written in Go that moderates messages in a specific topic thread of a supergroup. It automatically deletes messages that **do not contain a photo or a video of at least 30 seconds**. It also **forwards notifications** to another chat when a user leaves the group.
 
 ## Features
 
@@ -8,12 +8,14 @@ This is a simple Telegram bot written in Go that moderates messages in a specifi
 
     * do **not** include a photo;
     * and do **not** contain a video of 30 seconds or longer.
-* Supports monitoring a **specific topic (thread)** in a group chat.
+* Supports monitoring a **specific topic (thread)** in a supergroup.
+* Supports automatic pin for last location sharing message in specific thread of supergroup
 * Forwards a customizable message to another chat when a user leaves the group.
 * Multilingual / customizable strings via a `strings.yaml` file.
 * Configuration via `config.ini` (example provided)
 * Service for systemd provided in `telegram.service`
 * `install.sh` for fast compile
+* `update.sh` for fast update with start/stop on remove server
 
 ---
 
@@ -27,6 +29,7 @@ token = YOUR_BOT_TOKEN
 chat_id = -123456789          ; ID of the group to monitor
 topic_id = 123                ; ID of the specific topic/thread
 updates_chat_id = -987654321  ; ID of the chat where forward messages are sent
+location_topic_id = 123  ; ID of the topic where you want to pin the latest location sharing message
 ```
 
 ### `strings.yaml`
